@@ -1,10 +1,11 @@
-import pygame as pg
+import pygame as pg  # in pipfreeze
 from pygame import display, event, time
 from drawing import Drawing
 
 from config import *
 from player import Player
 from pawn import Pawn
+
 
 def main():
     pg.init()
@@ -25,10 +26,10 @@ def main():
             p_x, p_y = pawns.pos(i)
             drawing.npc(p_x, p_y, i, pawns.get_color(i))
             pawns.movement(i, dt)
-            if ((car_x < (p_x + player_size[0]-5) and
-                (car_x + player_size[0]) > p_x+5) and
-                (car_y < (p_y + player_size[1])-5 and 
-                (car_y + player_size[1]) > p_y+5)):
+            if ((car_x < (p_x + player_size[0] - 5) and
+                 (car_x + player_size[0]) > p_x + 5) and
+                    (car_y < (p_y + player_size[1]) - 5 and
+                     (car_y + player_size[1]) > p_y + 5)):
                 player = Player()
                 pawns = Pawn(pawn_cnt)
                 break
@@ -36,6 +37,7 @@ def main():
         player.movement(dt)
         display.flip()
         dt = clock.tick(FPS)
+
 
 if __name__ == '__main__':
     main()
